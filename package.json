@@ -1,0 +1,27 @@
+{
+  "name": "amazing_social_network_api",
+  "version": "1.0.0",
+  "description": "This is a social network API that enables a user to make post regarding thoughts, add friends and delete friends.",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "seed": "node utils/seed.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^6.8.3",
+    "mongoose-validator": "^2.1.0",
+    "nodemon": "^2.0.20"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kay-Annn/Amazing_Social_Network_API.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kay-Annn/Amazing_Social_Network_API/issues"
+  },
+  "homepage": "https://github.com/Kay-Annn/Amazing_Social_Network_API#readme"
+}
