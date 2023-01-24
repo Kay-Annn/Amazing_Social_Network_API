@@ -21,7 +21,21 @@ module.exports = {
   // Create a thought
   createThought(req, res) {
     Thought.create(req.body)
-      .then((thought) => res.json(thought))
+      .then((thought) =>{
+        return User.findOneAndUpdate(
+          {_id: req.body.username},
+          {$addToSet: {Thought: thought._id}},
+          {new:true}
+        );
+      })
+      .then((user) =>
+      !user
+      ? res
+              .status(404)
+              .json({ message: 'Thought created, but found no user with that ID' })
+          : res.json('Created the thought 🎉')
+         
+      )
       .catch((err) => {
         console.log(err);
         return res.status(500).json(err);
@@ -47,7 +61,7 @@ module.exports = {
     )
       .then((thought) =>
         !thought
-          ? res.status(404).json({ message: 'No course with this id!' })
+          ? res.status(404).json({ message: 'No user with this id!' })
           : res.json(thought)
       )
       .catch((err) => res.status(500).json(err));
