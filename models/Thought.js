@@ -2,7 +2,7 @@ const { Schema, model } = require('mongoose');
 
 const reactionSchema = new Schema(
   {
-    reactionBody: {
+    reactionId: {
       type: Schema.Types.ObjectId,
       default: () => new Types.ObjectId()
     },
@@ -22,7 +22,7 @@ const reactionSchema = new Schema(
       default: Date.now,
     }
   },
-  
+
   {
     toJSON: {
       virtuals: true,
@@ -45,8 +45,8 @@ const thoughtSchema = new Schema(
 
     username: [
       {
-        type: Schema.Types.ObjectId,
-        ref: 'User',
+        type: String,
+        required:true
       },
     ]
     ,

@@ -35,8 +35,6 @@ const userSchema = new Schema(
           ref: 'User',
         },
       ],
-
-    // reaction: [reactionSchema],
   },
   {
     toJSON: {
@@ -44,6 +42,11 @@ const userSchema = new Schema(
     },
   }
 );
+
+//create a virtual property "friendsCount" that gets the amount of friends per user
+userSchema.virtual('friendsCount').get(function () {
+  return this.friends.length;
+})
 
 const User = model('User', userSchema);
 
